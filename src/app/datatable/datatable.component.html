@@ -1,0 +1,68 @@
+<div class="mat-elevation-z8">
+  <table mat-table class="full-width-table" matSort aria-label="Elements" [dataSource]="dataSource">
+    <!-- Measurement ID Column -->
+    <ng-container matColumnDef="measurementID">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Measurement ID</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+    <!-- Sensor name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let row">{{row.sensor.name}}</td>
+    </ng-container>
+
+      <!-- Sensor ID Column -->
+      <ng-container matColumnDef="sensorID">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sensor ID</th>
+        <td mat-cell *matCellDef="let row">{{row.sensor.id}}</td>
+      </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+      <td mat-cell *matCellDef="let row">{{row.date | date:'longDate'}}</td>
+    </ng-container>
+
+    <!-- Temperature Column -->
+    <ng-container matColumnDef="temperature">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Temperature</th>
+      <td mat-cell *matCellDef="let row">{{row.temperature}} °C</td>
+    </ng-container>
+
+    <!-- Humidity Column -->
+    <ng-container matColumnDef="humidity">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Humidity</th>
+      <td mat-cell *matCellDef="let row">{{row.humidity}} %</td>
+    </ng-container>
+
+    <!-- Location Column -->
+    <ng-container matColumnDef="location">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
+      <td mat-cell *matCellDef="let row">{{row.sensor.location}}</td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Position</th>
+      <td mat-cell *matCellDef="let row">{{SensorPosition[row.sensor.position]}}</td>
+    </ng-container>
+
+    <!-- Delete Column -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Delete</th>
+      <td mat-cell *matCellDef="let row"><mat-icon (click)="deleteSensordata(row.id)">delete</mat-icon></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data?.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]"
+      aria-label="Select page">
+  </mat-paginator>
+</div>

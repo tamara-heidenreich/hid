@@ -1,0 +1,32 @@
+<div class="wrapper">  
+<app-button class="btn"
+  color="{{ showAddTask ? '#E7ADAE' : '#95B0C6' }}"
+  text="{{ showAddTask ? 'Schließen' : 'Messwert hinzufügen'}}"
+  (btnClick)="toggleAddTask()"
+></app-button>
+<form class="inputForm" [formGroup]="sensorenDataForm" (ngSubmit)="onSubmit()" *ngIf="showAddTask">
+    <h2>Neuen Messwert hinzufügen</h2>
+  <mat-form-field appearance="fill">
+    <mat-label>Bitte Sensor auswählen</mat-label>
+      <mat-select formControlName="sensorId" required>        
+        <mat-option *ngFor="let item of storeService.sensoren" [value]="item.id">{{item?.name}}</mat-option>
+      </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Datum</mat-label>
+        <input matInput [matDatepicker]="picker" name="datum" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Temperatur" type="number" name="Temperatur" formControlName="temperature">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Luftfeuchtigkeit" type="number" name="Luftfeuchtigkeit" formControlName="humidity">
+      </mat-form-field>
+
+    <div class="inputFooter"><button class="btn btn-primary" type="submit">
+      Erfassen
+    </button></div>
+</form>
+</div>
