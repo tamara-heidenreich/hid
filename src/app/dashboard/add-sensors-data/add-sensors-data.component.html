@@ -1,32 +1,35 @@
+<div id="overlay" style="display: flex; justify-content: center; align-items: center" *ngIf="loading">
+  <mat-spinner ></mat-spinner>
+</div>
 <div class="wrapper">  
 <app-button class="btn"
   color="{{ showAddTask ? '#E7ADAE' : '#95B0C6' }}"
-  text="{{ showAddTask ? 'Schließen' : 'Messwert hinzufügen'}}"
+  text="{{ showAddTask ? 'Close' : 'Add measurement'}}"
   (btnClick)="toggleAddTask()"
 ></app-button>
 <form class="inputForm" [formGroup]="sensorenDataForm" (ngSubmit)="onSubmit()" *ngIf="showAddTask">
-    <h2>Neuen Messwert hinzufügen</h2>
+    <h2>Add new measurement</h2>
   <mat-form-field appearance="fill">
-    <mat-label>Bitte Sensor auswählen</mat-label>
+    <mat-label>Please select sensor</mat-label>
       <mat-select formControlName="sensorId" required>        
         <mat-option *ngFor="let item of storeService.sensoren" [value]="item.id">{{item?.name}}</mat-option>
       </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>Datum</mat-label>
+        <mat-label>Date</mat-label>
         <input matInput [matDatepicker]="picker" name="datum" formControlName="date">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Temperatur" type="number" name="Temperatur" formControlName="temperature">
+        <input matInput placeholder="Temperature" type="number" name="Temperature" formControlName="temperature">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Luftfeuchtigkeit" type="number" name="Luftfeuchtigkeit" formControlName="humidity">
+        <input matInput placeholder="Humidity" type="number" name="Humidity" formControlName="humidity">
       </mat-form-field>
 
-    <div class="inputFooter"><button class="btn btn-primary" type="submit">
-      Erfassen
+    <div class="inputFooter"><button class="add-btn" type="submit">
+      Add measurement
     </button></div>
 </form>
 </div>

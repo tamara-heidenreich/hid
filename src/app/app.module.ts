@@ -7,7 +7,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddSensorsDataComponent } from './dashboard/add-sensors-data/add-sensors-data.component';
 import { ButtonComponent } from './button/button.component';
 import { HeaderComponent } from './header/header.component';
-import { SensorsDataComponent } from './dashboard/sensors-data/sensors-data.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,6 +22,9 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { DatatableComponent } from './datatable/datatable.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from "@angular/material/button";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from "@angular/material/snack-bar";
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,6 @@ import { MatButtonModule } from "@angular/material/button";
     AddSensorsDataComponent,
     ButtonComponent,
     HeaderComponent,
-    SensorsDataComponent,
     AboutPageComponent,
     DatatableComponent,
   ],
@@ -53,8 +54,12 @@ import { MatButtonModule } from "@angular/material/button";
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 4000}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
