@@ -7,7 +7,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddSensorsDataComponent } from './dashboard/add-sensors-data/add-sensors-data.component';
 import { ButtonComponent } from './button/button.component';
 import { HeaderComponent } from './header/header.component';
-import { AboutPageComponent } from './about-page/about-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -33,7 +32,6 @@ import {MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from "@angular/materia
     AddSensorsDataComponent,
     ButtonComponent,
     HeaderComponent,
-    AboutPageComponent,
     DatatableComponent,
   ],
   imports: [
